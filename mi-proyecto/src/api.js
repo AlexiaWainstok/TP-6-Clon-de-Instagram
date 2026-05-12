@@ -1,6 +1,10 @@
-// URL base para las peticiones
 import axios from 'axios';
-const api axios.create({
-baseURL: 'https://jsonplaceholder.typicode.com',
+
+const api = axios.create({
+  baseURL: 'https://api.thecatapi.com/v1',
+  headers: {
+    'x-api-key': 'live_CGB8sfH1gQs31FhOGUxcAIxvoFylE9HXD2UgE6xTGuc0bjUBT2S5glyU11jxFqWo',
+  },
 });
-export default api;no
+
+export default api;
