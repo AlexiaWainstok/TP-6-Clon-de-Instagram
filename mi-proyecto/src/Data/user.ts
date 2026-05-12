@@ -1,10 +1,9 @@
 export const user = {
-  username: "catlover",
-  profileImage:
-    "https://i.pravatar.cc/150?img=32",
-
-  bio: "Amante de los gatos 🐱",
-  posts: 10,
+  username: "alexia",
+  bio: "Cat lover 🐱",
   followers: 1200,
   following: 350,
+  posts: 10,
+  profileImage:
+    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
 };

@@ -1,0 +1,15 @@
+.post {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.post img {
+  width: 100%;
+}
+
+.post-info {
+  padding: 10px;
+}

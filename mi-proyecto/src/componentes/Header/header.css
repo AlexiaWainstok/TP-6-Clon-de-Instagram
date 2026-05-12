@@ -1,0 +1,12 @@
+.header {
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid #dbdbdb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: sticky;
+  top: 0;
+}
