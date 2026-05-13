@@ -1,26 +1,47 @@
-import "./postModal.css";
 import { PostType } from "../../Types/post";
 
-interface PostModalProps {
-  post: PostType | null;
+import "./postmodal.css";
+
+interface Props {
+  selectedPost: PostType | null;
   onClose: () => void;
 }
 
-function PostModal({ post, onClose }: PostModalProps) {
-  if (!post) return null;
+function PostModal({
+  selectedPost,
+  onClose,
+}: Props) {
+  if (!selectedPost) return null;
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div
+      className="modal-overlay"
+      onClick={onClose}
+    >
+      <div
+        className="modal"
+        onClick={(e) =>
+          e.stopPropagation()
+        }
+      >
+        <img
+          src={selectedPost.image}
+          alt={selectedPost.caption}
+        />
 
-        <button onClick={onClose}>X</button>
+        <div className="modal-info">
+          <h2>{selectedPost.username}</h2>
 
-        <img src={post.image} alt="cat" />
+          <p>{selectedPost.caption}</p>
 
-        <h2>{post.caption}</h2>
+          <span>
+            ❤️ {selectedPost.likes} likes
+          </span>
 
-        <p>{post.likes} likes</p>
-
+          <button onClick={onClose}>
+            Close
+          </button>
+        </div>
       </div>
     </div>
   );

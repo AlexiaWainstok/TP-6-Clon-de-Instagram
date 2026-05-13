@@ -1,9 +1,28 @@
-body {
+* {
   margin: 0;
-  background: #fafafa;
-  font-family: Arial;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.app {
-  min-height: 100vh;
+body {
+  background-color: #070b2d;
+
+  overflow-x: hidden;
+}
+
+.layout {
+  width: 95%;
+
+  margin: 40px auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 340px;
+
+  gap: 40px;
+
+  align-items: start;
 }

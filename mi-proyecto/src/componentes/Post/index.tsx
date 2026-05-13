@@ -1,21 +1,43 @@
-import "./post.css";
 import { PostType } from "../../Types/post";
+import "./post.css";
 
-interface PostProps {
+interface Props {
   post: PostType;
-  onSelect: (post: PostType) => void;
+  onSelectPost: (post: PostType) => void;
 }
 
-function Post({ post, onSelect }: PostProps) {
+function Post({ post, onSelectPost }: Props) {
   return (
-    <article className="post" onClick={() => onSelect(post)}>
-      <img src={post.image} alt="cat" />
+    <div
+      className="post"
+      onClick={() => onSelectPost(post)}
+    >
+      <div className="post-header">
+        <img
+          src={`https://i.pravatar.cc/100?u=${post.id}`}
+          alt={post.username}
+        />
 
-      <div className="post-info">
-        <p>{post.caption}</p>
-        <span>{post.likes} likes</span>
+        <h4>{post.username}</h4>
       </div>
-    </article>
+
+      <img
+        className="post-image"
+        src={post.image}
+        alt={post.caption}
+      />
+
+      <div className="post-content">
+        <p className="likes">
+          ❤️ {post.likes} likes
+        </p>
+
+        <p>
+          <strong>{post.username}</strong>{" "}
+          {post.caption}
+        </p>
+      </div>
+    </div>
   );
 }
 

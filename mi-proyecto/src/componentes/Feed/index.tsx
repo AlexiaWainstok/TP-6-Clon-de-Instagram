@@ -1,23 +1,37 @@
-import "./feed.css";
 import Post from "../Post";
+import Stories from "../Stories";
+
 import { PostType } from "../../Types/post";
 
-interface FeedProps {
+import "./feed.css";
+
+interface Props {
   posts: PostType[];
-  onSelect: (post: PostType) => void;
+  onSelectPost: (post: PostType) => void;
 }
 
-function Feed({ posts, onSelect }: FeedProps) {
+function Feed({
+  posts,
+  onSelectPost,
+}: Props) {
   return (
-    <section className="feed">
-      {posts.map((post) => (
-        <Post
-          key={post.id}
-          post={post}
-          onSelect={onSelect}
-        />
-      ))}
-    </section>
+    <div className="feed-container">
+      <Stories />
+
+      <h2 className="trending-title">
+        TRENDING
+      </h2>
+
+      <div className="feed">
+        {posts.map((post) => (
+          <Post
+            key={post.id}
+            post={post}
+            onSelectPost={onSelectPost}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 

@@ -5,3 +5,5 @@ export interface PostType {
   caption: string;
   likes: number;
 }
+
+

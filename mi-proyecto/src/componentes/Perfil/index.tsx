@@ -1,37 +1,38 @@
-//fijarse si hay que importar el CSS
-interface PerfilProps {
-  username: string;
-  bio: string;
-  followers: number;
-  following: number;
-  posts: number;
-  profileImage: string;
-}
+import { user } from "../../Data/user";
 
-function Perfil({
-  username,
-  bio,
-  followers,
-  following,
-  posts,
-  profileImage,
-}: PerfilProps) {
+import "./perfil.css";
+
+function Perfil() {
   return (
-    <section className="perfil">
-      <img src={profileImage} alt={username} />
+    <div className="perfil">
+      <img
+        src={user.profileImage}
+        alt={user.username}
+      />
 
-      <h2>{username}</h2>
+      <h2>{user.username}</h2>
 
-      <p>{bio}</p>
+      <p>{user.bio}</p>
 
-      <div className="stats">
-        <span>{posts} publicaciones</span>
-        <span>{followers} seguidores</span>
-        <span>{following} seguidos</span>
+      <div className="perfil-stats">
+        <div>
+          <strong>{user.posts}</strong>
+          <span>Posts</span>
+        </div>
+
+        <div>
+          <strong>{user.followers}</strong>
+          <span>Followers</span>
+        </div>
+
+        <div>
+          <strong>{user.following}</strong>
+          <span>Following</span>
+        </div>
       </div>
 
-      <button>Editar perfil</button>
-    </section>
+      <button>Edit Profile</button>
+    </div>
   );
 }
 

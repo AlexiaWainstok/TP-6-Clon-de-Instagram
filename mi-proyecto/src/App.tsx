@@ -1,57 +1,78 @@
 import { useEffect, useState } from "react";
+
 import Feed from "./componentes/Feed";
 import Header from "./componentes/Header";
 import Perfil from "./componentes/Perfil";
 import PostModal from "./componentes/PostModal";
 
-import { user } from "./Data/user";
-import {PostType } from "./Types/post";
+import { PostType } from "./Types/post";
+
 import { api } from "./Services/api";
 
 import "./App.css";
 
-
 function App() {
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState<
+    PostType[]
+  >([]);
+
   const [selectedPost, setSelectedPost] =
     useState<PostType | null>(null);
 
   useEffect(() => {
-    async function getCats() {
-      const response = await api.get("/images/search?limit=10");
+    async function getPosts() {
+      const response = await api.get(
+        "/images/search?limit=10"
+      );
 
-      const formattedPosts = response.data.map((cat: any) => ({
-        id: cat.id,
-        image: cat.url,
-        caption: "Cute cat 😺",
-        likes: Math.floor(Math.random() * 1000),
-      }));
+      const formattedPosts =
+        response.data.map(
+          (
+            item: {
+              id: string;
+              url: string;
+            },
+            index: number
+          ) => ({
+            id: item.id,
+            image: item.url,
+            username: `cat_user_${index + 1}`,
+            caption:
+              "Living my best cat life 🐱",
+            likes:
+              Math.floor(
+                Math.random() * 1000
+              ) + 100,
+          })
+        );
 
       setPosts(formattedPosts);
     }
 
-    getCats();
+    getPosts();
   }, []);
 
   return (
-    <div className="app">
-
+    <>
       <Header />
 
-      <Perfil {...user} />
+      <div className="layout">
+        <Feed
+          posts={posts}
+          onSelectPost={setSelectedPost}
+        />
 
-      <Feed
-        posts={posts}
-        onSelect={setSelectedPost}
-      />
+        <Perfil />
+      </div>
 
       <PostModal
-        post={selectedPost}
-        onClose={() => setSelectedPost(null)}
+        selectedPost={selectedPost}
+        onClose={() =>
+          setSelectedPost(null)
+        }
       />
-
-    </div>
+    </>
   );
 }
 
-export default App
+export default App;

@@ -1,4 +1,22 @@
+.feed-container {
+  width: 100%;
+}
+
+.trending-title {
+  color: white;
+
+  font-size: 42px;
+
+  margin-bottom: 30px;
+}
+
 .feed {
-  width: 500px;
-  margin: auto;
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+
+  align-items: start;
 }
