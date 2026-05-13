@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Feed from "./Componentes/Feed";
-import Header from "./Componentes/Header";
-import Perfil from "./Componentes/Perfil";
-import PostModal from "./Componentes/PostModal";
+import Feed from "./componentes/Feed";
+import Header from "./componentes/Header";
+import Perfil from "./componentes/Perfil";
+import PostModal from "./componentes/PostModal";
 
 import { user } from "./Data/user";
-import { PostType } from "./Types/post";
+import {PostType } from "./Types/post";
 import { api } from "./Services/api";
 
 import "./App.css";
